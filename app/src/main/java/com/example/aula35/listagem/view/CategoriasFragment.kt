@@ -50,7 +50,7 @@ class CategoriasFragment : Fragment() {
 
         _listaDeCategorias = mutableListOf<String>()
         _categoriasAdapter = CategoriasAdapter(_listaDeCategorias) {
-            Toast.makeText(view.context, it, Toast.LENGTH_LONG).show()
+            Toast.makeText(view.context, "Category $it", Toast.LENGTH_LONG).show()
             iJoke.categoryHandler(it)
         }
 

@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(), IJoke {
             .addToBackStack("Joke")
             .commit()
 
-        _jokeFragment.changeCategory(category)
+        _jokeFragment.changeCategory(category.toLowerCase())
     }
 
     override fun backPressed() {

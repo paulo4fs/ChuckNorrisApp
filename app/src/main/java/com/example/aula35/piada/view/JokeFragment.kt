@@ -66,7 +66,7 @@ class JokeFragment : Fragment() {
         val categoryTv = _view.findViewById<TextView>(R.id.tvCategoria)
         val jokeTv = _view.findViewById<TextView>(R.id.tvJoke)
 
-        categoryTv.text = joke?.categories?.get(0)
+        categoryTv.text = joke?.categories?.get(0)?.capitalize()
         jokeTv.text = joke?.value
         Picasso.get().load(joke?.image).into(imageIv)
     }

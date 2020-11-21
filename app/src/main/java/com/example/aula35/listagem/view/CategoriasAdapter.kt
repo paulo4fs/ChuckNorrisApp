@@ -17,7 +17,7 @@ class CategoriasAdapter(
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val item = categorias[position]
+        val item = categorias[position].capitalize()
 
         holder.bind(item)
 
