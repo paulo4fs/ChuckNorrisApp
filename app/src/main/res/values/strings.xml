@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Aula35</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="categoria">Categoria</string>
+    <string name="piada">piada piada piada piada piada piada piada piada</string>
+</resources>

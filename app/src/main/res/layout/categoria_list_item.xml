@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dim5dp"
+    android:background="@color/colorWhite"
+    android:backgroundTint="@color/colorAccent"
+    app:cardCornerRadius="@dimen/dim20dp"
+    android:id="@+id/mcvCard"
+    tools:showIn="@layout/fragment_categorias">
+
+    <TextView
+        android:id="@+id/categoria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/colorWhite"
+        android:padding="@dimen/dim10dp"
+        android:textSize="@dimen/dim18dp"
+        tools:text="@string/categoria" />
+
+</com.google.android.material.card.MaterialCardView>
