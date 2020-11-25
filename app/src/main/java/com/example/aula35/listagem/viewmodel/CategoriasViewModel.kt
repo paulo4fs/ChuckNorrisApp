@@ -11,9 +11,11 @@ class CategoriasViewModel(
     var categorias = listOf<String>()
 
     fun obterLista() = liveData(Dispatchers.IO) {
-        val response = repository.obterLista()
+        if (categorias.isEmpty()) {
+            val response = repository.obterLista()
+            categorias = response
+        }
 
-        categorias = response
-        emit(response)
+        emit(categorias)
     }
 }

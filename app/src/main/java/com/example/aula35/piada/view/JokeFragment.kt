@@ -10,7 +10,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
-import com.example.aula35.main.view.IJoke
+import androidx.navigation.fragment.findNavController
 import com.example.aula35.R
 import com.example.aula35.piada.model.JokeModel
 import com.example.aula35.piada.repository.JokeRepository
@@ -19,14 +19,12 @@ import com.example.aula35.piada.viewmodel.JokeViewModelFactory
 import com.squareup.picasso.Picasso
 
 class JokeFragment : Fragment() {
-    private lateinit var _viewModel: JokeViewModel
+    private lateinit var _jokeViewModel: JokeViewModel
     private lateinit var _view: View
-    private lateinit var category: String
-    private lateinit var iJoke: IJoke
+    private lateinit var _category: String
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        iJoke = context as IJoke
     }
 
     override fun onCreateView(
@@ -39,29 +37,23 @@ class JokeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _category = arguments?.getString("category").toString()
+
         _view = view
 
-        _viewModel = ViewModelProvider(
+        _jokeViewModel = ViewModelProvider(
             this,
             JokeViewModelFactory(JokeRepository())
         ).get(JokeViewModel::class.java)
 
-        category
-
-        _viewModel.obterJoke(category).observe(viewLifecycleOwner, {
+        _jokeViewModel.obterJoke(_category).observe(viewLifecycleOwner, {
             exibirResultados(it)
         })
 
         backNav()
     }
 
-    fun changeCategory(newCategory: String) {
-        category = newCategory
-    }
-
     private fun exibirResultados(joke: JokeModel?) {
-        joke?.let { joke }
-
         val imageIv = _view.findViewById<ImageView>(R.id.ivImage)
         val categoryTv = _view.findViewById<TextView>(R.id.tvCategoria)
         val jokeTv = _view.findViewById<TextView>(R.id.tvJoke)
@@ -73,7 +65,8 @@ class JokeFragment : Fragment() {
 
     private fun backNav() {
         _view.findViewById<ImageButton>(R.id.ibVoltar).setOnClickListener {
-            iJoke.backPressed()
+            val navController = findNavController()
+            navController.navigate(R.id.action_jokeFragment_to_categoriasFragment)
         }
     }
 }
